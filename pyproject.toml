@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "hw-04"
+version = "0.1.0"
+description = ""
+authors = ["Vadim Marenko <vadim.marenko@gmail.com>"]
+readme = "README.md"
+packages = [{include = "hw_04"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
