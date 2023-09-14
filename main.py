@@ -11,6 +11,7 @@ from datetime import datetime
 BASE_DIR = pathlib.Path()
 SOCKET_SERVER_IP = "127.0.0.1"
 SOCKET_SERVER_PORT = 5000
+HTTP_SERVER_IP = "0.0.0.0"
 SOCKET_BUFFER_SIZE = 1024
 HTTP_SERVER_PORT = 3000
 HTTP_STATUS_OK = 200
@@ -65,7 +66,7 @@ class HTTPHandler(BaseHTTPRequestHandler):
 
 
 def run(server=HTTPServer, handler=HTTPHandler):
-    address = ("", HTTP_SERVER_PORT)
+    address = (HTTP_SERVER_IP, HTTP_SERVER_PORT)
     http_server = server(address, handler)
     try:
         http_server.serve_forever()
