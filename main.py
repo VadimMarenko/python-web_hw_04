@@ -84,15 +84,23 @@ def save_data(data):
                 key: value for key, value in [el.split("=") for el in body.split("&")]
             }
         }
+        BASE_DIR.joinpath('storage').mkdir(exist_ok=True)
+        
+        if BASE_DIR.joinpath("storage/data.json").exists():
+            print("OK")
+            
+            with open(BASE_DIR.joinpath("storage/data.json"), "r") as fd:
+                data = fd.read()
+                if not data:
+                    existing_data = dict()
+                else:
+                    existing_data = json.load(fd)
 
-        with open(BASE_DIR.joinpath("storage/data.json"), "r") as fd:
-            data = fd.read()
-            if not data:
-                existing_data = dict()
-            else:
-                existing_data = json.load(fd)
+                existing_data.update(data_dict)
+        else:
 
-            existing_data.update(data_dict)
+            existing_data = data_dict
+            print(existing_data)
 
         with open(BASE_DIR.joinpath("storage/data.json"), "w", encoding="utf-8") as fd:
             json.dump(
