@@ -100,9 +100,7 @@ def save_data(data):
     except ValueError as err:
         logging.error(f"Field parse data {body} with error {err}")
     except OSError as err:
-        logging.error(f"Field write data {body} with error {err}")
-    except FileNotFoundError as err:
-        logging.error(f"Field write data {body} with error {err}")
+        logging.error(f"Field write data {body} with error {err}")    
     except json.JSONDecodeError as err:
         logging.error(f"Field write data {body} with error {err}")
 
