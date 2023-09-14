@@ -79,7 +79,7 @@ def save_data(data):
     current_time = datetime.now()
     formatted_time = current_time.strftime("%Y-%m-%d %H:%M:%S.%f")
     try:
-        payload = {
+        data_dict = {
             formatted_time: {
                 key: value for key, value in [el.split("=") for el in body.split("&")]
             }
@@ -92,7 +92,7 @@ def save_data(data):
             else:
                 existing_data = json.load(fd)
 
-            existing_data.update(payload)
+            existing_data.update(data_dict)
 
         with open(BASE_DIR.joinpath("storage/data.json"), "w", encoding="utf-8") as fd:
             json.dump(
