@@ -12,7 +12,7 @@ BASE_DIR = pathlib.Path()
 SOCKET_SERVER_IP = "127.0.0.1"
 SOCKET_SERVER_PORT = 5000
 SOCKET_BUFFER_SIZE = 1024
-
+HTTP_SERVER_PORT = 3000
 
 def send_data_to_socket(body):
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -62,7 +62,7 @@ class HTTPHandler(BaseHTTPRequestHandler):
 
 
 def run(server=HTTPServer, handler=HTTPHandler):
-    address = ("", 3000)
+    address = ("", HTTP_SERVER_PORT)
     http_server = server(address, handler)
     try:
         http_server.serve_forever()
