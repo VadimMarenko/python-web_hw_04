@@ -86,8 +86,7 @@ def save_data(data):
         }
         BASE_DIR.joinpath('storage').mkdir(exist_ok=True)
         
-        if BASE_DIR.joinpath("storage/data.json").exists():
-            print("OK")
+        if BASE_DIR.joinpath("storage/data.json").exists():            
             
             with open(BASE_DIR.joinpath("storage/data.json"), "r") as fd:
                 data = fd.read()
